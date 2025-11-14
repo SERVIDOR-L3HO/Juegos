@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏎️ Racing 3D</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <style>
+        body { overflow: hidden; }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" class="game-canvas"></canvas>
+    
+    <div class="game-ui">
+        <div class="hud">
+            <div class="hud-panel">
+                <div class="hud-item">
+                    <span class="hud-label">Tiempo:</span>
+                    <span class="hud-value" id="time">0:00</span>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-label">Velocidad:</span>
+                    <span class="hud-value" id="speed">0</span>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-label">Checkpoint:</span>
+                    <span class="hud-value" id="checkpoint">0/5</span>
+                </div>
+            </div>
+            <div class="hud-panel">
+                <div class="hud-item">
+                    <span class="hud-label">Mejor Tiempo:</span>
+                    <span class="hud-value" id="highScore">--:--</span>
+                </div>
+                <div class="hud-item">
+                    <a href="../../index.html" class="btn btn-secondary" style="font-size: 0.9rem; padding: 8px 16px;">Menú Principal</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="startPanel" class="start-panel">
+            <h2>🏎️ RACING 3D</h2>
+            <p style="color: var(--text-gray); margin-bottom: 30px;">Completa la pista en el menor tiempo posible</p>
+            
+            <div class="controls-info">
+                <h4>CONTROLES:</h4>
+                <div class="control-row">
+                    <span>Acelerar</span>
+                    <span><span class="key">↑</span> o <span class="key">W</span></span>
+                </div>
+                <div class="control-row">
+                    <span>Frenar</span>
+                    <span><span class="key">↓</span> o <span class="key">S</span></span>
+                </div>
+                <div class="control-row">
+                    <span>Girar</span>
+                    <span><span class="key">←</span> <span class="key">→</span> o <span class="key">A</span> <span class="key">D</span></span>
+                </div>
+            </div>
+
+            <button id="startBtn" class="btn btn-primary" style="margin-top: 20px; font-size: 1.2rem; padding: 15px 40px;">COMENZAR CARRERA</button>
+        </div>
+
+        <div id="finishPanel" class="game-over-panel hidden">
+            <h2>🏁 ¡CARRERA COMPLETADA!</h2>
+            <div class="final-score">
+                <div>Tiempo: <span id="finalTime">0:00</span></div>
+                <div id="newHighScore" style="color: var(--success); margin-top: 10px; display: none;">🎉 ¡NUEVO RÉCORD!</div>
+            </div>
+            <button id="playAgainBtn" class="btn btn-primary">Correr de Nuevo</button>
+            <a href="../../index.html" class="btn btn-secondary" style="margin-top: 15px;">Menú Principal</a>
+            
+            <div class="leaderboard" id="leaderboardPanel">
+                <h3>🏆 Mejores Tiempos</h3>
+                <ul class="leaderboard-list" id="leaderboardList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="game.js"></script>
+</body>
+</html>
