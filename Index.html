@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Caza del Tesoro — Juego (solo HTML)</title>
+</head>
+<body>
+  <h1>🗺️ Caza del Tesoro — Juego (solo HTML)</h1>
+  <p>
+    Bienvenido. Este es un juego interactivo hecho <strong>solo con HTML</strong>.
+    No usa CSS ni JavaScript: la interacción se logra con enlaces internos y elementos HTML que funcionan por sí mismos.
+    Lee con atención y elige tu camino. ¡Buena suerte!
+  </p>
+
+  <nav>
+    <strong>Cómo jugar:</strong>
+    <ul>
+      <li>Haz clic en las opciones (enlaces) para avanzar.</li>
+      <li>Algunas secciones usan <code>&lt;details&gt;</code> para pistas ocultas.</li>
+      <li>Puedes volver a empezar con el enlace "Reiniciar juego".</li>
+    </ul>
+  </nav>
+
+  <hr />
+
+  <section id="start">
+    <h2>Inicio — La aldea del viejo faro</h2>
+    <p>
+      Eres un explorador en búsqueda de un antiguo tesoro escondido en la costa.
+      En la aldea te esperan tres rutas. ¿Cuál eliges?
+    </p>
+
+    <ul>
+      <li><a href="#ruta-playa">Ruta 1 — Playa rocosa 🪨</a></li>
+      <li><a href="#ruta-bosque">Ruta 2 — Bosque espeso 🌲</a></li>
+      <li><a href="#ruta-pueblo">Ruta 3 — Pueblo abandonado 🏚️</a></li>
+    </ul>
+
+    <p><a href="#inventario">Ver inventario / pistas</a> · <a href="#help">Ayuda</a></p>
+  </section>
+
+  <hr />
+
+  <section id="ruta-playa">
+    <h2>Playa rocosa</h2>
+    <p>
+      La marea está baja. Entre las piedras ves una cueva pequeña con una entrada estrecha.
+      También hay una barca varada con un cofre cerrado con llave.
+    </p>
+
+    <ul>
+      <li><a href="#cueva">Explorar la cueva</a></li>
+      <li><a href="#barca">Abrir el cofre en la barca</a></li>
+      <li><a href="#start">Regresar a la aldea</a></li>
+    </ul>
+  </section>
+
+  <section id="cueva">
+    <h3>Cueva</h3>
+    <p>
+      En el interior hay un viejo mapa y una nota con un enigma.
+    </p>
+
+    <details>
+      <summary>Pista (haz clic para abrir)</summary>
+      <p>
+        "Tres pasos al norte desde el faro, dos al este: allí donde el sol se oculta, la X espera."
+      </p>
+    </details>
+
+    <p>
+      El mapa muestra una X en la colina cerca del faro. ¿Qué haces?
+    </p>
+
+    <ul>
+      <li><a href="#colina">Ir a la colina del faro</a></li>
+      <li><a href="#barca">Volver a la barca</a></li>
+      <li><a href="#start">Regresar a la aldea</a></li>
+    </ul>
+  </section>
+
+  <section id="barca">
+    <h3>Barca</h3>
+    <p>
+      El cofre tiene un candado con tres símbolos: 🌞 🌙 ⭐. Encontraste una nota:
+      "La respuesta no está en la noche ni en la luna, sino en lo que inicia el día."
+    </p>
+
+    <details>
+      <summary>Pista 2</summary>
+      <p>
+        Elige el símbolo que representa el amanecer.
+      </p>
+    </details>
+
+    <ul>
+      <li><a href="#cofre-correcto">Elegir 🌞 (amanecer)</a></li>
+      <li><a href="#cofre-incorrecto">Elegir 🌙 (luna)</a></li>
+      <li><a href="#cofre-incorrecto">Elegir ⭐ (estrella)</a></li>
+      <li><a href="#start">Volver a la aldea</a></li>
+    </ul>
+  </section>
+
+  <section id="cofre-correcto">
+    <h3>¡Cofre abierto!</h3>
+    <p>
+      Dentro hay una pequeña llave oxidada y una carta: "La llave abre aquello que guarda el camino".
+      Has conseguido una <strong>llave oxidada</strong>.
+    </p>
+    <p>
+      <a href="#inventario">Ver inventario</a> · <a href="#colina">Ir a la colina del faro</a>
+    </p>
+  </section>
+
+  <section id="cofre-incorrecto">
+    <h3>Intento fallido</h3>
+    <p>
+      No pasa nada. La marea sube lentamente; es hora de decidir rápido.
+    </p>
+
+    <ul>
+      <li><a href="#barca">Intentar otra vez</a></li>
+      <li><a href="#start">Regresar a la aldea</a></li>
+    </ul>
+  </section>
+
+  <hr />
+
+  <section id="ruta-bosque">
+    <h2>Bosque espeso</h2>
+    <p>
+      Caminas entre árboles altos. Encuentras una cabaña con una puerta cerrada y una ventana con barrotes.
+    </p>
+
+    <ul>
+      <li><a href="#cabaña">Investigar la cabaña</a></li>
+      <li><a href="#sendero">Seguir el sendero oscuro</a></li>
+      <li><a href="#start">Regresar a la aldea</a></li>
+    </ul>
+  </section>
+
+  <section id="cabaña">
+    <h3>Cabaña</h3>
+    <p>
+      En la puerta hay un hueco con forma de llave. Si intentas abrir, necesitas una llave fina.
+    </p>
+
+    <ul>
+      <li><a href="#cofre-correcto">Usar la llave oxidada</a> (si la encontraste)</li>
+      <li><a href="#sin-llave">Intentar forzar la puerta</a></li>
+      <li><a href="#ruta-bosque">Volver</a></li>
+    </ul>
+  </section>
+
+  <section id="sin-llave">
+    <h4>Sin llave</h4>
+    <p>
+      La puerta no cede. Desde la ventana ves un viejo baúl, pero está cerrado con un candado numérico sin números visibles.
+    </p>
+    <details>
+      <summary>Pista oculta</summary>
+      <p>El candado requiere una combinación de dos dígitos: la suma de los dedos de una mano y los ojos de un gato (5 + 2 = 7).</p>
+    </details>
+
+    <ul>
+      <li><a href="#ruta-bosque">Volver al sendero</a></li>
+      <li><a href="#start">Regresar a la aldea</a></li>
+    </ul>
+  </section>
+
+  <section id="sendero">
+    <h3>Sendero oscuro</h3>
+    <p>
+      Sigues un sendero y llegas a un claro con un pedestal y tres objetos: una brújula, una linterna y una concha.
+      Solo puedes llevar uno.
+    </p>
+
+    <ul>
+      <li><a href="#elegir-brujula">Tomar la brújula</a></li>
+      <li><a href="#elegir-linterna">Tomar la linterna</a></li>
+      <li><a href="#elegir-concha">Tomar la concha</a></li>
+    </ul>
+  </section>
+
+  <section id="elegir-brujula">
+    <h4>Has tomado la brújula</h4>
+    <p>
+      La brújula apunta hacia la colina del faro. Tal vez sea útil.
+    </p>
+    <p><a href="#colina">Ir a la colina del faro</a> · <a href="#inventario">Ver inventario</a></p>
+  </section>
+
+  <section id="elegir-linterna">
+    <h4>Has tomado la linterna</h4>
+    <p>
+      Buena elección para cuevas oscuras. Podría revelar pistas escondidas.
+    </p>
+    <p><a href="#cueva">Volver a la cueva</a> · <a href="#inventario">Ver inventario</a></p>
+  </section>
+
+  <section id="elegir-concha">
+    <h4>Has tomado la concha</h4>
+    <p>
+      Una concha especial que vibra cuando estás cerca del agua subterránea.
+    </p>
+    <p><a href="#barca">Volver a la barca</a> · <a href="#inventario">Ver inventario</a></p>
+  </section>
+
+  <hr />
+
+  <section id="ruta-pueblo">
+    <h2>Pueblo abandonado</h2>
+    <p>
+      Casas derruidas, un reloj sin manecillas y una plaza con una estatua. En la estatua hay un pedestal con una inscripción:
+      "Solo la verdad abre el camino".
+    </p>
+
+    <ul>
+      <li><a href="#estatua">Leer la estatua</a></li>
+      <li><a href="#reloj">Examinar el reloj</a></li>
+      <li><a href="#start">Regresar a la aldea</a></li>
+    </ul>
+  </section>
+
+  <section id="estatua">
+    <h3>La estatua</h3>
+    <p>
+      En la base hay tres símbolos: una pluma (✒️), una llama (🔥) y una llave (🔑).
+    </p>
+
+    <p>
+      Elige el símbolo que represente la "verdad".
+    </p>
+
+    <ul>
+      <li><a href="#pluma">✒️ Pluma</a></li>
+      <li><a href="#llama">🔥 Llama</a></li>
+      <li><a href="#llave">🔑 Llave</a></li>
+    </ul>
+  </section>
+
+  <section id="pluma">
+    <h4>Pluma — Sabiduría</h4>
+    <p>
+      La pluma revela un pasaje secreto que conduce a un viejo estudio con libros. Encuentras una nota:
+      "La verdad no se enciende, se escribe."
+    </p>
+
+    <p><a href="#estudio">Entrar al estudio</a> · <a href="#start">Regresar</a></p>
+  </section>
+
+  <section id="llama">
+    <h4>Llama — Peligro</h4>
+    <p>
+      Al tocar la llama, el pedestal chispea y nada más ocurre. Tal vez no era la respuesta.
+    </p>
+
+    <p><a href="#estatua">Volver</a> · <a href="#start">Regresar a la aldea</a></p>
+  </section>
+
+  <section id="llave">
+    <h4>Llave — Sombra</h4>
+    <p>
+      La llave hace un ruido metálico. Se abre una trampilla que baja a un pasillo oscuro.
+    </p>
+
+    <p><a href="#pasillo">Bajar por la trampilla</a> · <a href="#estatua">Volver</a></p>
+  </section>
+
+  <section id="estudio">
+    <h4>Estudio</h4>
+    <p>
+      Entre libros hay un poema con letras en mayúsculas resaltadas: <strong>F-A-R-O</strong>.
+      La palabra <em>FARO</em> aparece también en el mapa de la cueva.
+    </p>
+    <p><a href="#colina">Ir a la colina del faro</a></p>
+  </section>
+
+  <section id="pasillo">
+    <h4>Pasillo subterráneo</h4>
+    <p>
+      Avanzas y llegas a una puerta con un enigma: "Dame un número: el doble de la mitad de 14".
+    </p>
+
+    <ul>
+      <li><a href="#respuesta-correcta">Responder 14</a></li>
+      <li><a href="#respuesta-incorrecta">Responder 7</a></li>
+      <li><a href="#estatua">Volver</a></li>
+    </ul>
+  </section>
+
+  <section id="respuesta-correcta">
+    <h4>Respuesta correcta</h4>
+    <p>
+      La puerta se abre y encuentras un mapa que marca la X exactamente en la colina del faro.
+    </p>
+    <p><a href="#colina">Ir a la colina del faro</a></p>
+  </section>
+
+  <section id="respuesta-incorrecta">
+    <h4>Respuesta incorrecta</h4>
+    <p>
+      Un mecanismo bloquea la salida. Tendrás que retroceder y buscar otra pista.
+    </p>
+    <p><a href="#estatua">Volver</a></p>
+  </section>
+
+  <hr />
+
+  <section id="colina">
+    <h2>Colina del faro</h2>
+    <p>
+      Llegas a la colina. Hay un faro antiguo, una roca con una X y una caja enterrada parcialmente visible.
+    </p>
+
+    <ul>
+      <li><a href="#excavar">Excavar la X</a></li>
+      <li><a href="#faro">Examinar el faro</a></li>
+      <li><a href="#start">Regresar a la aldea</a></li>
+    </ul>
+  </section>
+
+  <section id="faro">
+    <h3>Faro</h3>
+    <p>
+      La puerta del faro tiene una cerradura finísima (ideal para la llave oxidada).
+    </p>
+
+    <ul>
+      <li><a href="#cofre-correcto">Usar la llave oxidada</a></li>
+      <li><a href="#sin-llave">Si no tienes llave, vuelve</a></li>
+    </ul>
+  </section>
+
+  <section id="excavar">
+    <h3>Excavar</h3>
+    <p>
+      Empujas la roca. Bajo ella aparece una caja con tres compartimentos y un enigma final:
+      "Solo quien combinó la verdad y el amanecer abrirá el tesoro."
+    </p>
+
+    <ul>
+      <li><a href="#tesoro">Abrir compartimento: Verdadero + Amanecer</a></li>
+      <li><a href="#fracaso">Abrir compartimento incorrecto</a></li>
+      <li><a href="#start">Retirarte</a></li>
+    </ul>
+  </section>
+
+  <section id="fracaso">
+    <h4>Intento fallido</h4>
+    <p>
+      El compartimento se cierra y una corriente de aire te empuja. Parece que necesitas las pistas correctas antes de intentar.
+    </p>
+    <p><a href="#start">Volver a la aldea</a></p>
+  </section>
+
+  <section id="tesoro">
+    <h2>¡Has abierto el tesoro!</h2>
+    <p>
+      Dentro hay monedas antiguas, un diario y un medallón con una inscripción: "Valiente y sabio".
+      <strong>¡Felicidades! Has completado la Caza del Tesoro.</strong>
+    </p>
+
+    <p>
+      Resultado: <strong>Triunfador</strong> ✅
+    </p>
+
+    <p>
+      <a href="#start">Reiniciar juego</a>
+    </p>
+  </section>
+
+  <hr />
+
+  <section id="inventario">
+    <h2>Inventario / Pistas (simulado)</h2>
+    <p>
+      Nota: Como esta página es solo HTML sin JavaScript, el inventario no se actualiza dinámicamente.
+      Usa tu memoria para recordar objetos obtenidos (por ejemplo: llave oxidada, brújula, linterna).
+    </p>
+
+    <ul>
+      <li>Llave oxidada — puede abrir cerraduras finas (si la encontraste en la barca).</li>
+      <li>Brújula — apunta hacia la colina del faro (si la tomaste en el bosque).</li>
+      <li>Linterna — útil en cuevas oscuras.</li>
+    </ul>
+
+    <p><a href="#start">Volver al inicio</a></p>
+  </section>
+
+  <section id="help">
+    <h2>Ayuda rápida</h2>
+    <p>
+      Ideas para avanzar:
+      <ul>
+        <li>Busca pistas en <em>notes</em> y <em>details</em>.</li>
+        <li>Combina pistas (por ejemplo: "amanecer" → 🌞 ; "verdad" → pluma).</li>
+        <li>Si te quedas atascado, regresa al inicio y explora otra ruta.</li>
+      </ul>
+    </p>
+    <p><a href="#start">Volver al inicio</a></p>
+  </section>
+
+  <footer>
+    <hr />
+    <p>By L3HO — Juego simple hecho solo con HTML. Para versiones más avanzadas con CSS/JS o servidor, dime y lo hacemos.</p>
+  </footer>
+</body>
+                                                  </html>
+                                                  
