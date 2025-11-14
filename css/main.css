@@ -403,7 +403,23 @@ header {
     animation: fadeIn 0.5s ease-out;
 }
 
+.mobile-only {
+    display: none;
+}
+
+.desktop-only {
+    display: flex;
+}
+
 @media (max-width: 768px) {
+    .mobile-only {
+        display: flex;
+    }
+    
+    .desktop-only {
+        display: none !important;
+    }
+    
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -426,5 +442,10 @@ header {
     .hud {
         flex-direction: column;
         gap: 10px;
+    }
+    
+    .hud-panel {
+        min-width: auto;
+        width: 100%;
     }
 }

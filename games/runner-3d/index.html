@@ -2,11 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>🏃 Runner 3D</title>
     <link rel="stylesheet" href="../../css/main.css">
     <style>
-        body { overflow: hidden; }
+        body { overflow: hidden; touch-action: none; }
+        canvas { touch-action: none; }
     </style>
 </head>
 <body>

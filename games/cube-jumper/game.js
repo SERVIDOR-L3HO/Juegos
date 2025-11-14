@@ -1,6 +1,7 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js';
 import { GameManager } from '../../shared/game-manager.js';
 import { auth, onAuthStateChanged } from '../../shared/firebase-config.js';
+import { TouchControls, isMobileDevice } from '../../shared/touch-controls.js';
 
 class CubeJumperGame {
     constructor() {
@@ -27,6 +28,8 @@ class CubeJumperGame {
         this.mouseDown = false;
         this.gameManager = new GameManager('cube-jumper');
         this.startTime = 0;
+        this.touchControls = null;
+        this.isMobile = isMobileDevice();
         
         this.init();
     }

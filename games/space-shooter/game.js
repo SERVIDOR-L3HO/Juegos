@@ -1,6 +1,7 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js';
 import { GameManager } from '../../shared/game-manager.js';
 import { auth, signInWithGoogle, onAuthStateChanged } from '../../shared/firebase-config.js';
+import { TouchControls, isMobileDevice } from '../../shared/touch-controls.js';
 
 class SpaceShooterGame {
     constructor() {
@@ -26,6 +27,8 @@ class SpaceShooterGame {
         
         this.gameManager = new GameManager('space-shooter');
         this.startTime = 0;
+        this.touchControls = null;
+        this.isMobile = isMobileDevice();
         
         this.init();
     }
@@ -280,6 +283,16 @@ class SpaceShooterGame {
         this.gameState = 'playing';
         this.startTime = Date.now();
         document.getElementById('startPanel').classList.add('hidden');
+        
+        if (this.isMobile && !this.touchControls) {
+            this.touchControls = new TouchControls({
+                showJoystick: true,
+                buttons: [
+                    { id: 'shoot', label: '🔥', position: 'bottomRight', bottom: 30, right: 30 }
+                ]
+            });
+        }
+        
         this.gameManager.incrementGamesPlayed();
         this.animate();
     }
@@ -367,17 +380,32 @@ class SpaceShooterGame {
         if (this.gameState !== 'playing' || this.isPaused) return;
         
         const speed = 0.3;
-        if (this.keys['ArrowLeft'] || this.keys['a'] || this.keys['A']) {
-            this.player.position.x = Math.max(this.player.position.x - speed, -10);
-        }
-        if (this.keys['ArrowRight'] || this.keys['d'] || this.keys['D']) {
-            this.player.position.x = Math.min(this.player.position.x + speed, 10);
-        }
-        if (this.keys['ArrowUp'] || this.keys['w'] || this.keys['W']) {
-            this.player.position.y = Math.min(this.player.position.y + speed, 8);
-        }
-        if (this.keys['ArrowDown'] || this.keys['s'] || this.keys['S']) {
-            this.player.position.y = Math.max(this.player.position.y - speed, -8);
+        
+        if (this.touchControls) {
+            const joystick = this.touchControls.getJoystickDirection();
+            this.player.position.x = Math.max(Math.min(this.player.position.x + joystick.x * speed, 10), -10);
+            this.player.position.y = Math.max(Math.min(this.player.position.y - joystick.y * speed, 8), -8);
+            
+            if (this.touchControls.isButtonPressed('shoot')) {
+                const now = Date.now();
+                if (now - this.lastShootTime > this.shootCooldown) {
+                    this.shoot(true);
+                    this.lastShootTime = now;
+                }
+            }
+        } else {
+            if (this.keys['ArrowLeft'] || this.keys['a'] || this.keys['A']) {
+                this.player.position.x = Math.max(this.player.position.x - speed, -10);
+            }
+            if (this.keys['ArrowRight'] || this.keys['d'] || this.keys['D']) {
+                this.player.position.x = Math.min(this.player.position.x + speed, 10);
+            }
+            if (this.keys['ArrowUp'] || this.keys['w'] || this.keys['W']) {
+                this.player.position.y = Math.min(this.player.position.y + speed, 8);
+            }
+            if (this.keys['ArrowDown'] || this.keys['s'] || this.keys['S']) {
+                this.player.position.y = Math.max(this.player.position.y - speed, -8);
+            }
         }
         
         this.stars.forEach(starfield => {

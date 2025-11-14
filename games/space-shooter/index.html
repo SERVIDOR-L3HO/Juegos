@@ -2,11 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>🚀 Space Shooter 3D</title>
     <link rel="stylesheet" href="../../css/main.css">
     <style>
-        body { overflow: hidden; }
+        body { overflow: hidden; touch-action: none; }
+        canvas { touch-action: none; }
     </style>
 </head>
 <body>
@@ -45,17 +49,20 @@
             
             <div class="controls-info">
                 <h4>CONTROLES:</h4>
-                <div class="control-row">
+                <div class="control-row desktop-only">
                     <span>Mover</span>
                     <span><span class="key">←</span> <span class="key">→</span> <span class="key">↑</span> <span class="key">↓</span></span>
                 </div>
-                <div class="control-row">
+                <div class="control-row desktop-only">
                     <span>Disparar</span>
                     <span><span class="key">ESPACIO</span></span>
                 </div>
-                <div class="control-row">
+                <div class="control-row desktop-only">
                     <span>Pausa</span>
                     <span><span class="key">P</span></span>
+                </div>
+                <div class="control-row mobile-only">
+                    <span>📱 Usa el joystick virtual para mover y el botón para disparar</span>
                 </div>
             </div>
 

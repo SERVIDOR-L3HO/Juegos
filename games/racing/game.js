@@ -1,6 +1,7 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js';
 import { GameManager, formatTime } from '../../shared/game-manager.js';
 import { auth, onAuthStateChanged } from '../../shared/firebase-config.js';
+import { TouchControls, isMobileDevice } from '../../shared/touch-controls.js';
 
 class RacingGame {
     constructor() {
@@ -25,6 +26,8 @@ class RacingGame {
         this.gameState = 'start';
         this.keys = {};
         this.gameManager = new GameManager('racing');
+        this.touchControls = null;
+        this.isMobile = isMobileDevice();
         
         this.init();
     }
