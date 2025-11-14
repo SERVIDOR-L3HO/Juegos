@@ -1,51 +1,55 @@
-# Caza del Tesoro - Treasure Hunt Game
+# Overview
 
-## Overview
-This is an interactive treasure hunt game built entirely with HTML only. No CSS or JavaScript - the interactivity is achieved through internal links and native HTML elements like `<details>` tags.
+This is a Liga MX (Mexican Soccer League) application that uses Firebase as its backend-as-a-service platform. The project provides authentication, database, and storage capabilities through Firebase services. The application appears to be designed for web deployment with support for Replit hosting environments.
 
-**Language:** Spanish  
-**Created by:** L3HO  
-**Purpose:** Educational HTML game demonstrating interactive web experiences using pure HTML
+# User Preferences
 
-## Project Structure
-```
-.
-├── index.html       # Main game file with all interactive sections
-├── server.py        # Python HTTP server to serve the static HTML
-├── README.md        # Simple project readme
-└── replit.md        # This file
-```
+Preferred communication style: Simple, everyday language.
 
-## How It Works
-- The game uses anchor links (`#section-id`) to navigate between different story sections
-- Players make choices by clicking links that take them to different parts of the page
-- Hints are revealed using `<details>` and `<summary>` HTML elements
-- The game tracks progress through the player's journey via URL fragments
+# System Architecture
 
-## Game Features
-- Multiple story paths (Beach, Forest, Abandoned Village)
-- Interactive puzzles and riddles
-- Hidden clues that can be revealed
-- Various endings based on player choices
-- Complete narrative loop with restart functionality
+## Frontend Architecture
+- **Pure JavaScript with ES6 Modules**: The application uses modern JavaScript with ES6 module imports, loaded directly from CDN (Firebase SDK 10.7.1)
+- **Static Web Application**: Client-side only architecture with no apparent server-side rendering
 
-## Technical Setup
-- **Server:** Python 3.11 with built-in HTTP server
-- **Port:** 5000 (configured for Replit webview)
-- **Cache Control:** Disabled for proper iframe rendering in Replit
-- **Deployment:** Configured for autoscale deployment
+## Authentication & Authorization
+- **Firebase Authentication**: Implements Google OAuth 2.0 as the primary authentication mechanism
+- **Google Sign-In Provider**: Configured with 'select_account' prompt to allow users to choose between multiple Google accounts
+- **Domain Authorization**: Includes error handling for unauthorized domains, particularly designed to work with Replit's dynamic domain system
+- **Testing Configuration**: Auth verification is enabled (not disabled for testing), indicating production-ready security settings
 
-## Running Locally
-The workflow is already configured. The game runs automatically via the web-server workflow which starts `python server.py` on port 5000.
+**Design Rationale**: Google authentication was chosen for its simplicity and widespread user adoption. The `select_account` parameter improves user experience for users with multiple Google accounts.
 
-## Deployment
-The project is configured for Replit's autoscale deployment, which is ideal for this stateless static website. To publish:
-1. Click the "Deploy" button in Replit
-2. The game will be available at your deployment URL
+## Data Storage
+- **Cloud Firestore**: NoSQL document database for storing application data
+- **Firebase Storage**: Cloud storage service for handling file uploads (images, documents, etc.)
 
-## Recent Changes
-- **2025-11-14:** Initial project import and setup for Replit environment
-  - Renamed Index.html to index.html (lowercase) for standard web server compatibility
-  - Created Python HTTP server with cache control disabled for Replit iframe
-  - Configured workflow on port 5000 with webview output
-  - Set up deployment configuration for autoscale
+**Design Rationale**: Firebase's real-time database capabilities and automatic scaling make it suitable for dynamic sports data that may need live updates.
+
+## Deployment Considerations
+- **Replit-Optimized**: Special handling for Replit's dynamic domain system with domain authorization error handling
+- **CDN-Based Dependencies**: All Firebase libraries loaded from Google's CDN rather than npm packages, reducing build complexity
+
+# External Dependencies
+
+## Third-Party Services
+- **Firebase Platform** (v10.7.1)
+  - Firebase Authentication
+  - Cloud Firestore
+  - Firebase Storage
+  - Project ID: `ligamx-daf3d`
+
+## Authentication Provider
+- **Google OAuth 2.0**: Primary identity provider for user authentication
+
+## CDN Dependencies
+- Firebase SDK modules loaded from `https://www.gstatic.com/firebasejs/10.7.1/`
+  - firebase-app.js
+  - firebase-auth.js
+  - firebase-firestore.js
+  - firebase-storage.js
+
+## Configuration Notes
+- Firebase API keys and configuration are exposed client-side (standard practice for Firebase web applications)
+- Domain authorization requires manual configuration in Firebase Console for new deployment domains
+- The application is configured for the `ligamx-daf3d.firebaseapp.com` domain with support for additional authorized domains

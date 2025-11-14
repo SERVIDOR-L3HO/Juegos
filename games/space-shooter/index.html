@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Space Shooter 3D</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <style>
+        body { overflow: hidden; }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" class="game-canvas"></canvas>
+    
+    <div class="game-ui">
+        <div class="hud">
+            <div class="hud-panel">
+                <div class="hud-item">
+                    <span class="hud-label">Score:</span>
+                    <span class="hud-value" id="score">0</span>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-label">Nivel:</span>
+                    <span class="hud-value" id="level">1</span>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-label">Vidas:</span>
+                    <span class="hud-value" id="lives">❤️❤️❤️</span>
+                </div>
+            </div>
+            <div class="hud-panel">
+                <div class="hud-item">
+                    <span class="hud-label">Mejor Score:</span>
+                    <span class="hud-value" id="highScore">0</span>
+                </div>
+                <div class="hud-item">
+                    <a href="../../index.html" class="btn btn-secondary" style="font-size: 0.9rem; padding: 8px 16px;">Menú Principal</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="startPanel" class="start-panel">
+            <h2>🚀 SPACE SHOOTER</h2>
+            <p style="color: var(--text-gray); margin-bottom: 30px;">Destruye asteroides y naves enemigas</p>
+            
+            <div class="controls-info">
+                <h4>CONTROLES:</h4>
+                <div class="control-row">
+                    <span>Mover</span>
+                    <span><span class="key">←</span> <span class="key">→</span> <span class="key">↑</span> <span class="key">↓</span></span>
+                </div>
+                <div class="control-row">
+                    <span>Disparar</span>
+                    <span><span class="key">ESPACIO</span></span>
+                </div>
+                <div class="control-row">
+                    <span>Pausa</span>
+                    <span><span class="key">P</span></span>
+                </div>
+            </div>
+
+            <button id="startBtn" class="btn btn-primary" style="margin-top: 20px; font-size: 1.2rem; padding: 15px 40px;">COMENZAR</button>
+            
+            <div id="loginPrompt" style="margin-top: 20px; display: none;">
+                <p style="color: var(--warning);">Inicia sesión para guardar tu progreso</p>
+                <button id="loginGameBtn" class="btn btn-secondary">Iniciar Sesión</button>
+            </div>
+        </div>
+
+        <div id="pausePanel" class="pause-panel hidden">
+            <h2>⏸️ PAUSA</h2>
+            <button id="resumeBtn" class="btn btn-primary">Continuar</button>
+            <button id="restartBtn" class="btn btn-secondary" style="margin-top: 15px;">Reiniciar</button>
+        </div>
+
+        <div id="gameOverPanel" class="game-over-panel hidden">
+            <h2>💀 GAME OVER</h2>
+            <div class="final-score">
+                <div>Score: <span id="finalScore">0</span></div>
+                <div id="newHighScore" style="color: var(--success); margin-top: 10px; display: none;">🎉 ¡NUEVO RÉCORD!</div>
+            </div>
+            <button id="playAgainBtn" class="btn btn-primary">Jugar de Nuevo</button>
+            <a href="../../index.html" class="btn btn-secondary" style="margin-top: 15px;">Menú Principal</a>
+            
+            <div class="leaderboard" id="leaderboardPanel">
+                <h3>🏆 Top 10</h3>
+                <ul class="leaderboard-list" id="leaderboardList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="game.js"></script>
+</body>
+</html>
